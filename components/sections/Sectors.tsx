@@ -2,7 +2,7 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Plane, Shield, Train, Radio } from "lucide-react";
+import { Plane, Shield, Train, Radio, ArrowRight } from "lucide-react";
 import { SECTORS } from "@/lib/constants";
 import { staggerContainer, fadeInUp } from "@/lib/animations";
 import Badge from "@/components/ui/Badge";
@@ -49,7 +49,7 @@ export default function Sectors() {
           variants={staggerContainer}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
-          className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6"
+          className="grid sm:grid-cols-2 gap-6"
         >
           {SECTORS.map((sector) => {
             const Icon = iconMap[sector.icon];
@@ -57,21 +57,33 @@ export default function Sectors() {
               <motion.div
                 key={sector.title}
                 variants={fadeInUp}
-                className="glass-card rounded-2xl p-6 transition-all duration-500 hover:scale-[1.02] group"
+                className="glass-card rounded-2xl p-6 md:p-8 transition-all duration-500 hover:scale-[1.02] group"
               >
-                <div className={`inline-flex p-3 rounded-xl bg-bg-secondary mb-5 text-${sector.accentColor} group-hover:shadow-[0_0_20px_rgba(0,212,255,0.15)] transition-shadow duration-300`}>
-                  <Icon size={24} />
+                <div className="flex items-start gap-4 mb-4">
+                  <div className={`inline-flex p-3 rounded-xl bg-bg-secondary text-${sector.accentColor} group-hover:shadow-[0_0_20px_rgba(0,212,255,0.15)] transition-shadow duration-300 shrink-0`}>
+                    <Icon size={24} />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-bold">{sector.title}</h3>
+                    <Badge variant={badgeVariantMap[sector.accentColor]} className="mt-1">
+                      {sector.product}
+                    </Badge>
+                  </div>
                 </div>
-
-                <h3 className="text-lg font-bold mb-3">{sector.title}</h3>
 
                 <p className="text-text-secondary text-sm leading-relaxed mb-4">
                   {sector.description}
                 </p>
 
-                <Badge variant={badgeVariantMap[sector.accentColor]}>
-                  {sector.product}
-                </Badge>
+                <a
+                  href={sector.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-accent-primary text-sm font-semibold hover:gap-2.5 transition-all duration-300"
+                >
+                  {sector.linkLabel}
+                  <ArrowRight size={14} />
+                </a>
               </motion.div>
             );
           })}

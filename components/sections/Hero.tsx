@@ -73,7 +73,7 @@ export default function Hero() {
               transition={{ duration: 0.5, delay: 0.1 }}
               className="font-mono text-sm text-accent-primary tracking-wide"
             >
-              Trusted by Airbus, ESA &amp; NATO since 2001
+              Trusted by Airbus, ESA &amp; the French Army since 2001
             </motion.p>
 
             {/* Main headline */}
@@ -117,11 +117,11 @@ export default function Hero() {
               <Button
                 variant="primary"
                 size="lg"
-                href="mailto:contact@pragmadev.com"
+                href="mailto:info@pragmadev.com"
               >
                 Request a Demo
               </Button>
-              <Button variant="ghost" size="lg" href="#solutions">
+              <Button variant="ghost" size="lg" href="#demos">
                 See How It Works
               </Button>
             </motion.div>

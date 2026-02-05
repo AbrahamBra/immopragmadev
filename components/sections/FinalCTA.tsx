@@ -45,22 +45,23 @@ export default function FinalCTA() {
             <Button
               variant="primary"
               size="lg"
-              href="mailto:contact@pragmadev.com"
+              href="mailto:info@pragmadev.com"
             >
               Request a Demo
             </Button>
             <Button
               variant="ghost"
               size="lg"
-              href="https://www.pragmadev.com"
+              href="https://www.pragmadev.com/downloads/index.html"
             >
               Download Free Edition
             </Button>
           </div>
 
           <p className="text-text-muted text-sm font-mono">
-            PragmaDev Process editor is free. PragmaDev Studio is free for small
-            projects.
+            PragmaDev Process editor is free — no restrictions.
+            <br />
+            PragmaDev Studio is free for small projects. PragmaDev Tracer is always free.
           </p>
         </motion.div>
       </div>

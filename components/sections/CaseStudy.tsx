@@ -5,7 +5,6 @@ import { useRef } from "react";
 import { ArrowRight, Quote } from "lucide-react";
 import { CASE_STUDY } from "@/lib/constants";
 import { timelineStep } from "@/lib/animations";
-import Button from "@/components/ui/Button";
 
 export default function CaseStudy() {
   const ref = useRef<HTMLElement>(null);
@@ -93,7 +92,7 @@ export default function CaseStudy() {
           transition={{ duration: 0.5, delay: 1 }}
         >
           <a
-            href="https://www.pragmadev.com"
+            href={CASE_STUDY.ctaLink}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 text-accent-primary font-semibold hover:gap-3 transition-all duration-300"

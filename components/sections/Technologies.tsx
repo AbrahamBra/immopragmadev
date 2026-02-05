@@ -2,6 +2,7 @@
 
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { useRef, useState } from "react";
+import { ExternalLink } from "lucide-react";
 import { TECHNOLOGIES } from "@/lib/constants";
 import { staggerContainer, fadeInUp } from "@/lib/animations";
 
@@ -9,6 +10,8 @@ export default function Technologies() {
   const ref = useRef<HTMLElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [activeTech, setActiveTech] = useState<string | null>(null);
+
+  const activeData = TECHNOLOGIES.find((t) => t.name === activeTech);
 
   return (
     <section ref={ref} id="technologies" className="relative py-20 md:py-32">
@@ -24,7 +27,7 @@ export default function Technologies() {
             Built on international standards.
           </h2>
           <p className="text-text-secondary text-lg">
-            Not proprietary lock-in.
+            Not proprietary lock-in. ITU-T, OMG, and ETSI standards compliance.
           </p>
         </motion.div>
 
@@ -54,7 +57,7 @@ export default function Technologies() {
 
         {/* Description panel */}
         <AnimatePresence mode="wait">
-          {activeTech && (
+          {activeTech && activeData && (
             <motion.div
               key={activeTech}
               initial={{ opacity: 0, y: 10, height: 0 }}
@@ -63,13 +66,25 @@ export default function Technologies() {
               transition={{ duration: 0.3 }}
               className="mt-8 text-center"
             >
-              <div className="glass-card rounded-xl p-6 inline-block max-w-lg">
-                <p className="text-accent-primary font-mono font-bold text-sm mb-2">
+              <div className="glass-card rounded-xl p-6 inline-block max-w-lg text-left">
+                <p className="text-accent-primary font-mono font-bold text-sm mb-1">
                   {activeTech}
                 </p>
-                <p className="text-text-secondary text-sm">
-                  {TECHNOLOGIES.find((t) => t.name === activeTech)?.description}
+                <p className="text-text-muted font-mono text-xs mb-3">
+                  {activeData.fullName}
                 </p>
+                <p className="text-text-secondary text-sm leading-relaxed mb-3">
+                  {activeData.description}
+                </p>
+                <a
+                  href={activeData.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-accent-primary text-xs font-mono hover:underline"
+                >
+                  Learn more on pragmadev.com
+                  <ExternalLink size={11} />
+                </a>
               </div>
             </motion.div>
           )}

@@ -70,7 +70,7 @@ export default function Solutions() {
 
             <div className="flex flex-wrap items-center gap-4">
               <a
-                href="https://www.pragmadev.com/product/process.html"
+                href={SOLUTIONS.process.ctaLink}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-accent-primary font-semibold hover:gap-3 transition-all duration-300"
@@ -99,16 +99,18 @@ export default function Solutions() {
               {SOLUTIONS.studio.description}
             </p>
 
-            {/* Pipeline visualization */}
-            <div className="flex items-center gap-2 mb-8 overflow-x-auto pb-2">
+            {/* Pipeline visualization with descriptions */}
+            <div className="grid grid-cols-2 gap-3 mb-8">
               {SOLUTIONS.studio.pipeline.map((step, i) => (
-                <div key={step} className="flex items-center gap-2">
-                  <span className="px-3 py-1.5 rounded-lg bg-accent-secondary/10 text-accent-secondary font-mono text-xs whitespace-nowrap border border-accent-secondary/20">
-                    {step}
-                  </span>
-                  {i < SOLUTIONS.studio.pipeline.length - 1 && (
-                    <ArrowRight size={14} className="text-text-muted shrink-0" />
-                  )}
+                <div key={step} className="group">
+                  <div className="px-3 py-2 rounded-lg bg-accent-secondary/10 border border-accent-secondary/20 transition-all duration-300 group-hover:border-accent-secondary/40 group-hover:bg-accent-secondary/15">
+                    <span className="text-accent-secondary font-mono text-xs font-bold block">
+                      {step}
+                    </span>
+                    <span className="text-text-muted text-[10px] leading-tight block mt-0.5">
+                      {SOLUTIONS.studio.pipelineDescriptions[i]}
+                    </span>
+                  </div>
                 </div>
               ))}
             </div>
@@ -130,7 +132,7 @@ export default function Solutions() {
 
             <div className="flex flex-wrap items-center gap-4">
               <a
-                href="https://www.pragmadev.com/product/studio.html"
+                href={SOLUTIONS.studio.ctaLink}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-accent-secondary font-semibold hover:gap-3 transition-all duration-300"

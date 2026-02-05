@@ -2,7 +2,7 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { AlertTriangle, Clock, DollarSign } from "lucide-react";
+import { AlertTriangle, Clock, Shield } from "lucide-react";
 import { PAIN_POINTS } from "@/lib/constants";
 import { staggerContainer, fadeInUp } from "@/lib/animations";
 import CountUp from "@/components/ui/CountUp";
@@ -10,7 +10,7 @@ import CountUp from "@/components/ui/CountUp";
 const iconMap = {
   AlertTriangle,
   Clock,
-  DollarSign,
+  Shield,
 } as const;
 
 export default function PainPoints() {
@@ -59,9 +59,14 @@ export default function PainPoints() {
                     {point.statLabel}
                   </p>
                 </div>
-                <p className="text-text-secondary leading-relaxed">
+                <p className="text-text-secondary leading-relaxed mb-3">
                   {point.description}
                 </p>
+                {"source" in point && point.source && (
+                  <p className="text-text-muted text-xs font-mono">
+                    Source: {point.source}
+                  </p>
+                )}
               </motion.div>
             );
           })}
